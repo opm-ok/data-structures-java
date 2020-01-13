@@ -4,19 +4,13 @@ public class Main {
 
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
 
-        singlyLinkedList.addToTail(10);
-        singlyLinkedList.addToTail(9);
-        singlyLinkedList.addToTail(3);
-        singlyLinkedList.addToTail(20);
-        singlyLinkedList.addToTail(25);
-        singlyLinkedList.addToTail(30);
-        singlyLinkedList.addToTail(44);
-        singlyLinkedList.addToHead(99);
+        singlyLinkedList.add(10);
+        singlyLinkedList.add(44);
+        singlyLinkedList.add(99);
+        singlyLinkedList.add(55);
+        singlyLinkedList.remove(1);
 
         singlyLinkedList.printList();
-        System.out.println("Singly Linked List contains: "
-                + singlyLinkedList.getSize() + " elements");
-
 
     }
 }
