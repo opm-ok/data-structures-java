@@ -6,7 +6,6 @@ public class DoublyLinkedList {
     private Node previous;
     private int size;
 
-
     // Returns the number of elements in list
     public int getSize() {
         return this.size;
@@ -166,4 +165,5 @@ public class DoublyLinkedList {
             System.out.println("Empty List");
         }
     }
+
 }
