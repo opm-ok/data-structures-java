@@ -6,6 +6,8 @@ public class DoublyLinkedList {
     private Node previous;
     private int size;
 
+
+    // Returns the number of elements in list
     public int getSize() {
         return this.size;
     }
@@ -15,6 +17,7 @@ public class DoublyLinkedList {
         Node newNode = new Node(data);
         newNode.setNext(head);
 
+        // Insert in an empty list
         if (head == null){
             head = newNode;
             tail = newNode;
@@ -44,25 +47,76 @@ public class DoublyLinkedList {
     }
 
     // Insert data at the specified index
-    public void add(int index, int data){
+    public void addAtIndex(int index, int data){
         Node newNode = new Node(data);
 
-        if (index < 0 || index >= this.size){
+        if (index < 0 || index > this.size){
             System.out.println("Index out of bounds");
         }
         else {
+
+            // Add to head of the list if the index is 0
             if (index == 0){
                 addToHead(data);
-            } else {
-                Node previousNode = query(index -1);
 
+            // Add to the tail of the list if the index is last valid index in the array
+            } else if (index == this.size){
+                addToTail(data);
+
+            // Add between two nodes
+            } else {
+                Node previousNode = query(index - 1); // Previous node at the specified index
+                Node currentNode = query(index); // Current node at the specified index
+
+                // previousNode
+                newNode.setNext(previousNode.getNext());
+                newNode.setPrevious(previousNode);
+                previousNode.setNext(newNode);
+
+                // currentNode
+                currentNode.setPrevious(newNode);
+
+                // number of elements in the list increased
+                this.size++;
             }
         }
+    }
 
+    // Remove node at the specified index
+    public void remove(int index){
+
+        // Input validation
+        if (index < 0 || index >= this.size){
+            System.out.println("Index out of bounds");
+
+        // Remove from head
+        } else if (index == 0){
+
+            head = head.getNext();
+            head.setPrevious(null);
+            this.size--;
+
+        // Remove from tail
+        } else if (index == (this.size - 1)){
+
+            tail = tail.getPrevious();
+            tail.setNext(null);
+            this.size--;
+
+        // Remove node between two nodes
+        } else {
+
+            Node previousNode = query(index - 1);
+            Node currentNode = query(index);
+
+            previousNode.setNext(currentNode.getNext());
+            currentNode.getNext().setPrevious(previousNode);
+            this.size--;
+        }
     }
 
     // Retrieve node at the specified index
-    public Node query(int index){
+    private Node query(int index){
 
         if (index < 0 || index >= this.size){
             System.out.println("Index out of bound");
@@ -79,7 +133,7 @@ public class DoublyLinkedList {
         }
     }
 
-
+    // Traverse and print from Head to Tail
     public void printList(){
         Node currentNode = head;
 
@@ -89,6 +143,23 @@ public class DoublyLinkedList {
                 System.out.print(currentNode.getData());
                 System.out.print(" <=> ");
                 currentNode = currentNode.getNext();
+            }
+            System.out.println(currentNode.getData() + " -> Null");
+        } else {
+            System.out.println("Empty List");
+        }
+    }
+
+    // Traverse and print from Tail to Head
+    public void printListReverse(){
+        Node currentNode = tail;
+
+        if (currentNode != null){
+            System.out.print("Tail -> ");
+            while (currentNode.getPrevious() != null){
+                System.out.print(currentNode.getData());
+                System.out.print(" <=> ");
+                currentNode = currentNode.getPrevious();
             }
             System.out.println(currentNode.getData() + " -> Null");
         } else {
