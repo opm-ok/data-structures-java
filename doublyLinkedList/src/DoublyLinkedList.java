@@ -17,11 +17,13 @@ public class DoublyLinkedList {
 
         if (head == null){
             head = newNode;
+            tail = newNode;
         } else {
             newNode.setNext(head);
             head.setPrevious(newNode);
             head = newNode;
         }
+        this.size++;
     }
 
     // Insert data at the end of the list
@@ -31,15 +33,50 @@ public class DoublyLinkedList {
         // Insert in an empty list
         if (tail == null){
             head = newNode;
-            this.size++;
+            tail = newNode;
 
         } else {
             tail.setNext(newNode);
             newNode.setPrevious(tail);
             tail = newNode;
-            this.size++;
             }
+        this.size++;
+    }
 
+    // Insert data at the specified index
+    public void add(int index, int data){
+        Node newNode = new Node(data);
+
+        if (index < 0 || index >= this.size){
+            System.out.println("Index out of bounds");
+        }
+        else {
+            if (index == 0){
+                addToHead(data);
+            } else {
+                Node previousNode = query(index -1);
+
+            }
+        }
+
+    }
+
+    // Retrieve node at the specified index
+    public Node query(int index){
+
+        if (index < 0 || index >= this.size){
+            System.out.println("Index out of bound");
+            return null;
+
+        } else {
+            Node currentNode = head;
+            int traverseIndex = 0;
+            while (traverseIndex != index){
+                currentNode = currentNode.getNext();
+                traverseIndex++;
+            }
+            return currentNode;
+        }
     }
 
 
@@ -53,7 +90,7 @@ public class DoublyLinkedList {
                 System.out.print(" <=> ");
                 currentNode = currentNode.getNext();
             }
-            System.out.print(currentNode.getData() + " -> Null");
+            System.out.println(currentNode.getData() + " -> Null");
         } else {
             System.out.println("Empty List");
         }
