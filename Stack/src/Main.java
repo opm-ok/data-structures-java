@@ -19,6 +19,6 @@ public class Main {
     // If you use an array, then push is O(n) because the array may have to be resized
     // If you know the max items that will ever be  on the stack, an array can be a good choice
     // If memory is tight, an array might be a good choice
-    
+
 
 }
