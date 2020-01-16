@@ -5,7 +5,7 @@ public class ArrayListStack {
 
     // Implementation of a Stack using an Array List
 
-    Deque<Employee> arrayListStack = new ArrayDeque<>();
+    private Deque<Employee> arrayListStack = new ArrayDeque<>();
 
     public void push(Employee employee){
         arrayListStack.push(employee);
