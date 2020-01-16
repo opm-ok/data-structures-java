@@ -38,11 +38,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", id=" + id +
-                '}';
+        return firstName + " " + lastName;
     }
 
     @Override
@@ -54,7 +50,6 @@ public class Employee {
                 firstName.equals(employee.firstName) &&
                 lastName.equals(employee.lastName);
     }
-
 
     @Override
     public int hashCode() {
