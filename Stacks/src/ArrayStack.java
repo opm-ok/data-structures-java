@@ -39,13 +39,13 @@ public class ArrayStack {
         return removedEmployee;
     }
 
-    // Peak - returns object from the top of the stack but does not remove
-    public Employee peak(){
+    // Peek - returns object from the top of the stack but does not remove
+    public Employee peek(){
         if (isEmpty()){
             throw new EmptyStackException();
         }
-        Employee peakedEmployee = stack[top - 1];
-        System.out.println("Peaked: " + peakedEmployee);
+        Employee peekedEmployee = stack[top - 1];
+        System.out.println("Peeked: " + peekedEmployee);
         return stack[top - 1];
     }
 
@@ -60,8 +60,8 @@ public class ArrayStack {
     }
 
     // Print all items from top to bottom
-    public void printEmployees(){
-        for (int i = top - 1; i > 0 ; i--) {
+    public void print(){
+        for (int i = top - 1; i >= 0 ; i--) {
             Employee employee = stack[i];
             System.out.println("\t" + employee);
         }

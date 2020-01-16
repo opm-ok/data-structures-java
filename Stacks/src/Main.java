@@ -5,7 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayStack stack = new ArrayStack(4); // Stack implementation with an Array
+        ArrayStack stack = new ArrayStack(5); // Stack implementation with an Array
+
 
         Employee batman = new Employee("Bruce", "Wayne", 101);
         Employee superman = new Employee("Clark", "Kent", 55);
@@ -33,15 +34,15 @@ public class Main {
         stack.pop(); // hulk removed
         System.out.println();
 
-        // Peak
-        stack.peak();
+        // Peek
+        stack.peek();
 
         System.out.println("\nStack is empty: " + stack.isEmpty());
         System.out.println("Size of stack: " + stack.getSize());
 
-        System.out.println("=========================================");
+        System.out.println();
         System.out.println("Print all employees in the stack (Top to bottom):");
-        stack.printEmployees();
+        stack.print();
     }
 }
 
@@ -52,7 +53,7 @@ public class Main {
 // peek - gets the top item on the stack without popping it
 // Ideal backing data structure: linked list
 
-// O(1) for pop, push, peak with a linked list
+// O(1) for pop, push, peek with a linked list
 // Linked list is ideal overall
 
 // Implementations with an array:
