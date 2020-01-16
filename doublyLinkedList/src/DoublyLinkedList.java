@@ -20,6 +20,7 @@ public class DoublyLinkedList {
         if (head == null){
             head = newNode;
             tail = newNode;
+
         } else {
             newNode.setNext(head);
             head.setPrevious(newNode);
