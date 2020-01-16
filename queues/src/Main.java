@@ -10,7 +10,8 @@ public class Main {
         SuperHero hulk = new SuperHero("Bruce", "Banner", 4500);
         SuperHero ironman = new SuperHero("Tony", "Stark", 2500);
         SuperHero shazam = new SuperHero("Billy", "Batson", 3000);
-
+        SuperHero flash = new SuperHero("Barry", "Allen", 6000);
+        
         queue.add(batman);
         queue.add(superman);
         queue.add(spiderman);
