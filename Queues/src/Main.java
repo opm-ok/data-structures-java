@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayQueue queue = new ArrayQueue(5);
+        CircularQueue queue = new CircularQueue(4);
 
         SuperHero batman = new SuperHero("Bruce", "Wayne", 1000);
         SuperHero superman = new SuperHero("Clark", "Kent", 9000);
@@ -18,12 +18,14 @@ public class Main {
         queue.add(hulk);
         queue.add(ironman);
         queue.add(shazam);
+        queue.add(flash);
 
-        queue.remove();
-        System.out.println("Size of Queue: " + queue.size());
+        System.out.println("Removed: " + queue.remove() );
         System.out.println("Peek: " + queue.peek());
 
-        System.out.println("\nQueue printed front to back: ");
+
+        System.out.println("\nSize of Queue: " + queue.size());
+
         queue.print();
     }
 }

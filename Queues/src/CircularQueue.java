@@ -1,4 +1,3 @@
-import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 public class CircularQueue {
@@ -7,22 +6,33 @@ public class CircularQueue {
     private int front; // Always contains the earliest element added in the queue
     private int back; // Always reference the next empty index
 
-    // size = 5 and queue.length = 5
+    public CircularQueue(int capacity){
+        this.queue = new SuperHero[capacity];
+    }
 
-    // 0 data  - front
-    // 1 data
-    // 2 data
-    // 3 data
-    // 4       - back
-
-    // add
-    // 1 - resize the array if the array is full (front = 0 and back == length -1)
-    //
     public void add(SuperHero superHero){
 
+        // 1 - resize the array if the array is full (size() == queue.length - 1)
+        // 2 - Add and increment back (array is not full)
+        // 3 - Move back to zero if array not full and back reach end of array
+
         if (size() == queue.length - 1){
-            // double the array
+            int numItems = size(); // used to assign back index for the new array
+
+            SuperHero[] newArray = new SuperHero[queue.length * 2];
+
+            // Copy from front to the end of the array
+            System.arraycopy(queue, front, newArray, 0, queue.length - front);
+
+            // Copy from 0 to back
+            System.arraycopy(queue, 0, newArray, queue.length - front, back);
+
+            queue = newArray;
+
+            front = 0;
+            back = numItems;
         }
+
         queue[back] = superHero;
         if (back < queue.length -1){
             back++;
@@ -47,25 +57,46 @@ public class CircularQueue {
             front = 0;
             back = 0;
         }
-
+        // Wrap front to 0 when the front reaches the end of the queue
+        else if (front == queue.length){
+            front = 0;
+        }
         return removedSuperHero;
     }
 
     public SuperHero peek(){
         if (size() == 0){
-            return null;
+            throw new NoSuchElementException();
         }
         return queue[front];
     }
 
     public int size(){
-        return back - front;
+
+        // queue hasn't wrapped. Back is greater than front
+        if (front <= back){
+            return back - front;
+        }
+        else {
+            return back - front + queue.length;
+        }
     }
 
     public void print(){
         System.out.println("Queue (Front to back): ");
-        for (int i = front; i < back; i++) {
-            System.out.println("\t" + queue[i]);
+        if (front <= back){
+            for (int i = front; i < back; i++) {
+                System.out.println("\t" + queue[i]);
+            }
+        }
+        else {
+            for (int i = front; i < queue.length; i++) {
+                System.out.println("\t" + queue[i]);
+            }
+
+            for (int i = 0; i < back; i++) {
+                System.out.println("\t" + queue[i]);
+            }
         }
     }
 }
