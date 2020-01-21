@@ -1,7 +1,19 @@
 public class Main {
 
     public static void main(String[] args) {
+        SuperHero batman = new SuperHero("Bruce", "Wayne", 999);
+        SuperHero flash = new SuperHero("Barry", "Allen", 2000);
+        SuperHero spiderman = new SuperHero("Peter", "Parker", 700);
+        SuperHero superman = new SuperHero("Clark", "Kent", 700);
 
+        SimpleHashtable hashtable = new SimpleHashtable();
+
+        hashtable.put("batman", batman);
+        hashtable.put("flash", flash);
+        hashtable.put("spiderman", spiderman );
+        hashtable.put("superman", superman );
+
+        hashtable.print();
 
 
     }
@@ -36,4 +48,15 @@ public class Main {
 // 1. Provide the key
 // 2. Use the same hash function to hash the key to an int value
 // 3. Retrieve the value stored at the hashed key value
+
+
+// COLLISION
+// Collection occurs when more than one value has the same hashed value
+// Dealing with collision
+//      1) Open Addressing (AO)
+                // LINEAR PROBING
+                // If the position is taken, we look for another position in the array
+
+
+
 
