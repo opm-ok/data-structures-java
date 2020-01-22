@@ -24,9 +24,38 @@ public class SimpleHashtable {
         if (hashtable[hashedKey] != null && hashtable[hashedKey].key.equals(key)){
             return hashedKey;
         }
+        else {
+            int stopIndex = hashedKey;
+
+            if (hashedKey == hashtable.length -1){
+                hashedKey = 0;
+            }
+            else {
+                hashedKey++;
+            }
+
+            while (hashedKey != stopIndex // We have traversed the entire array
+
+                    // Linear probing; if the next available value is null, therefore the key must be in the array
+                    && hashtable[hashedKey] != null
+
+                   // Continue to traverse if the key value is not correct
+                    && !hashtable[hashedKey].key.equals(key)){
+
+                hashedKey = (hashedKey + 1 % hashtable.length); // increment hashedKey
+            }
+            // After traversing and locating the correct key or looping through the entire array
+
+
+            if (!hashtable[hashedKey].key.equals(key)){
+                return -1;
+            }
+        }
+        return hashedKey;
     }
 
-    // Put - implements Linear Probing
+
+    // Put
     public void put(String key, SuperHero value){
         int hashedKey = hashKeyFunction(key);
 
@@ -61,18 +90,46 @@ public class SimpleHashtable {
 
     // Get
     public SuperHero get(String key){
-        int hashedKey = hashKeyFunction(key);
+        int hashedKey = findKey(key);
+        if (hashedKey == -1){
+            return null;
+        }
+        return hashtable[hashedKey].superHero;
+    }
 
-        return hashtable[hashedKey];
+    // Remove
+    public SuperHero remove(String key){
+        int hashedKey = findKey(key);
+
+        // if the key was found in the array
+        if (hashtable[hashedKey] != null){
+
+            // Store and then null value at the hashedKey
+            StoredSuperHero removedSuperHero = hashtable[hashedKey];
+            hashtable[hashedKey] = null;
+
+            // Recreate hashtable, rehashing each key and adjusting hashtable
+            StoredSuperHero[] oldHashtable = hashtable;
+            hashtable = new StoredSuperHero[oldHashtable.length];
+
+            for (StoredSuperHero storedSuperHero : oldHashtable) {
+                if (storedSuperHero != null) {
+                    put(storedSuperHero.key, storedSuperHero.superHero);
+                }
+            }
+            return removedSuperHero.superHero;
+        }
+        return null;
     }
 
     // Print
     public void print(){
-        System.out.println("Hashtable: ");
+        System.out.println("\nHashtable: ");
         for (int i = 0; i < hashtable.length; i++) {
             System.out.println(i + " - " + hashtable[i]);
         }
     }
 }
+
 
 

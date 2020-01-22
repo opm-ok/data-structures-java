@@ -7,4 +7,9 @@ public class StoredSuperHero {
         this.key = key;
         this.superHero = superHero;
     }
+
+    @Override
+    public String toString() {
+        return key + ": " + superHero;
+    }
 }

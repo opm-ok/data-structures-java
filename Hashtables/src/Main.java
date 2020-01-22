@@ -1,19 +1,29 @@
 public class Main {
 
     public static void main(String[] args) {
+
+        // List of Superheroes
         SuperHero batman = new SuperHero("Bruce", "Wayne", 999);
         SuperHero flash = new SuperHero("Barry", "Allen", 2000);
         SuperHero spiderman = new SuperHero("Peter", "Parker", 700);
         SuperHero superman = new SuperHero("Clark", "Kent", 700);
         SuperHero hulk = new SuperHero("Bruce", "Banner", 900);
+        SuperHero hawk = new SuperHero("Clinton", "barton", 400);
 
+        // Instantiate SimpleHashtable
         SimpleHashtable hashtable = new SimpleHashtable();
 
-        hashtable.put("batman", batman);
-        hashtable.put("flash", flash);
-        hashtable.put("spiderman", spiderman );
-        hashtable.put("superman", superman );
-        hashtable.put("hulk", hulk);
+        hashtable.put("batman", batman); // add to 6
+        hashtable.put("flash", flash); // add to 5
+        hashtable.put("spiderman", spiderman ); // add to 9
+        hashtable.put("superman", superman ); // add to 8
+        hashtable.put("hulk", hulk); // add to 4
+
+        // add to 7 (4 is occupied by hulk, 5 and 6 are occupied, the next available index is 7) - LINEAR PROBING
+        hashtable.put("hawk", hawk);
+
+        System.out.println("Get key - 'flash': " + hashtable.get("flash"));
+        System.out.println("Remove key - 'hawk': " + hashtable.remove("hawk"));
 
         hashtable.print();
 
