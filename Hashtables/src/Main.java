@@ -5,6 +5,7 @@ public class Main {
         SuperHero flash = new SuperHero("Barry", "Allen", 2000);
         SuperHero spiderman = new SuperHero("Peter", "Parker", 700);
         SuperHero superman = new SuperHero("Clark", "Kent", 700);
+        SuperHero hulk = new SuperHero("Bruce", "Banner", 900);
 
         SimpleHashtable hashtable = new SimpleHashtable();
 
@@ -12,9 +13,9 @@ public class Main {
         hashtable.put("flash", flash);
         hashtable.put("spiderman", spiderman );
         hashtable.put("superman", superman );
+        hashtable.put("hulk", hulk);
 
         hashtable.print();
-
 
     }
 }
