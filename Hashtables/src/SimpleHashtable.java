@@ -42,11 +42,12 @@ public class SimpleHashtable {
             }
 
             // After traversing and locating the correct key or looping through the entire array
-            if (hashtable[hashedKey] == null || hashedKey==stopIndex){
+            if (hashtable[hashedKey] != null && hashtable[hashedKey].key.equals(key)){
+                return hashedKey;
+            } else {
                 return -1;
             }
         }
-        return hashedKey;
     }
 
     // Put
