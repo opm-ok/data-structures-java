@@ -23,7 +23,11 @@ public class Main {
         hashtable.put("hawk", hawk);
 
         System.out.println("Get key - 'flash': " + hashtable.get("flash"));
+        System.out.println("Get key - 'orange': " + hashtable.get("orange"));
+
+
         System.out.println("Remove key - 'hawk': " + hashtable.remove("hawk"));
+        System.out.println("Remove key - 'apple': " + hashtable.remove("apple"));
 
         hashtable.print();
 

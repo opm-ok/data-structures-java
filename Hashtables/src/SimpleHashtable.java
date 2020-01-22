@@ -34,32 +34,26 @@ public class SimpleHashtable {
                 hashedKey++;
             }
 
-            while (hashedKey != stopIndex // We have traversed the entire array
-
-                    // Linear probing; if the next available value is null, therefore the key must be in the array
-                    && hashtable[hashedKey] != null
-
-                   // Continue to traverse if the key value is not correct
-                    && !hashtable[hashedKey].key.equals(key)){
-
-                hashedKey = (hashedKey + 1 % hashtable.length); // increment hashedKey
+            // We have traversed the entire array
+            // Linear probing; if the next available value is null, therefore the key must be in the array
+            // Continue to traverse if the key value is not correct
+            while (hashedKey != stopIndex && hashtable[hashedKey] != null && !hashtable[hashedKey].key.equals(key)){
+                hashedKey = (hashedKey + 1) % hashtable.length; // increment hashedKey
             }
+
             // After traversing and locating the correct key or looping through the entire array
-
-
-            if (!hashtable[hashedKey].key.equals(key)){
+            if (hashtable[hashedKey] == null || hashedKey==stopIndex){
                 return -1;
             }
         }
         return hashedKey;
     }
 
-
     // Put
     public void put(String key, SuperHero value){
         int hashedKey = hashKeyFunction(key);
 
-        // if the occupied - traverse the array until an empty index is found or we loop through the entire array
+        // if the occupied - traverse the array until an empty index is found or we finish looping the entire array
         if (occupied(hashedKey)){
             int stopIndex = hashedKey;
 
@@ -102,7 +96,7 @@ public class SimpleHashtable {
         int hashedKey = findKey(key);
 
         // if the key was found in the array
-        if (hashtable[hashedKey] != null){
+        if (hashedKey != -1){
 
             // Store and then null value at the hashedKey
             StoredSuperHero removedSuperHero = hashtable[hashedKey];
@@ -129,7 +123,6 @@ public class SimpleHashtable {
             System.out.println(i + " - " + hashtable[i]);
         }
     }
+
 }
-
-
 
