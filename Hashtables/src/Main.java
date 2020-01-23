@@ -29,7 +29,14 @@ public class Main {
         System.out.println("Remove key - 'hawk': " + hashtable.remove("hawk"));
         System.out.println("Remove key - 'apple': " + hashtable.remove("apple"));
 
-        hashtable.print();
+        ChainedHashtable chainedHashtable = new ChainedHashtable();
+        chainedHashtable.put("batman", batman);
+        chainedHashtable.put("superman", superman);
+        chainedHashtable.put("hulk", hulk);
+        chainedHashtable.put("hawk", hawk);
+
+        chainedHashtable.print();
+
 
     }
 }
@@ -68,9 +75,11 @@ public class Main {
 // COLLISION
 // Collection occurs when more than one value has the same hashed value
 // Dealing with collision
-//      1) Open Addressing (AO)
-                // LINEAR PROBING
+//      1) OPEN ADDRESSING (AO)
+                // Linear Probing
                 // If the position is taken, we look for another position in the array
+//      2) CHAINING
+                //
 
 
 
