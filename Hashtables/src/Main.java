@@ -1,3 +1,8 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.function.BiConsumer;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -5,7 +10,7 @@ public class Main {
         SuperHero batman = new SuperHero("Bruce", "Wayne", 999);
         SuperHero flash = new SuperHero("Barry", "Allen", 2000);
         SuperHero spiderman = new SuperHero("Peter", "Parker", 700);
-        SuperHero superman = new SuperHero("Clark", "Kent", 700);
+        SuperHero superman = new SuperHero("Clark", "Kent", 3500);
         SuperHero hulk = new SuperHero("Bruce", "Banner", 900);
         SuperHero hawk = new SuperHero("Clinton", "Barton", 400);
 
@@ -29,9 +34,19 @@ public class Main {
         chainedHashtable.put("hulk", hulk);
         chainedHashtable.put("hawk", hawk);
 
-        System.out.println(chainedHashtable.remove("hawk"));
 
-        chainedHashtable.print();
+
+        // JDK HASHMAP
+        HashMap<String, SuperHero> hashMap = new HashMap<>();
+
+        // put, get, putIfAbsent, getOrDefault, remove, replace
+        hashMap.put("batman", batman);
+        hashMap.put("flash", flash);
+        hashMap.put("spiderman", spiderman);
+        hashMap.put("hulk", hulk);
+        hashMap.putIfAbsent("hawk", hawk);
+
+        hashMap.forEach((k, v) -> System.out.println(k + " : " + v));
 
     }
 }
