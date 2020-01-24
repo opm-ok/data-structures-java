@@ -2,15 +2,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // List of Superheroes
         SuperHero batman = new SuperHero("Bruce", "Wayne", 999);
         SuperHero flash = new SuperHero("Barry", "Allen", 2000);
         SuperHero spiderman = new SuperHero("Peter", "Parker", 700);
         SuperHero superman = new SuperHero("Clark", "Kent", 700);
         SuperHero hulk = new SuperHero("Bruce", "Banner", 900);
-        SuperHero hawk = new SuperHero("Clinton", "barton", 400);
+        SuperHero hawk = new SuperHero("Clinton", "Barton", 400);
 
-        // Instantiate SimpleHashtable
+        // HASHTABLE - LINEAR PROBING
         SimpleHashtable hashtable = new SimpleHashtable();
 
         hashtable.put("batman", batman); // add to 6
@@ -22,21 +21,19 @@ public class Main {
         // add to 7 (4 is occupied by hulk, 5 and 6 are occupied, the next available index is 7) - LINEAR PROBING
         hashtable.put("hawk", hawk);
 
-        System.out.println("Get key - 'flash': " + hashtable.get("flash"));
-        System.out.println("Get key - 'orange': " + hashtable.get("orange"));
 
-
-        System.out.println("Remove key - 'hawk': " + hashtable.remove("hawk"));
-        System.out.println("Remove key - 'apple': " + hashtable.remove("apple"));
-
+        // HASHTABLE - CHAINING
         ChainedHashtable chainedHashtable = new ChainedHashtable();
         chainedHashtable.put("batman", batman);
         chainedHashtable.put("superman", superman);
+        chainedHashtable.put("spiderman", spiderman);
+        chainedHashtable.put("flash", flash);
         chainedHashtable.put("hulk", hulk);
         chainedHashtable.put("hawk", hawk);
 
-        chainedHashtable.print();
+        System.out.println(chainedHashtable.remove("hawk"));
 
+        chainedHashtable.print();
 
     }
 }
@@ -79,7 +76,8 @@ public class Main {
                 // Linear Probing
                 // If the position is taken, we look for another position in the array
 //      2) CHAINING
-                //
+                // LinkedList in each index of an array, collisions are stored together in a LinkedList
+
 
 
 
