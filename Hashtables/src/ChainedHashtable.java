@@ -8,7 +8,6 @@ public class ChainedHashtable {
 
    private LinkedList<StoredSuperHero>[] hashtable; // create an array of LinkedList
 
-    @SuppressWarnings("ExplicitArrayFilling")
     public ChainedHashtable(){
         this.hashtable = new LinkedList[10];
         for (int i = 0; i < hashtable.length ; i++) {
@@ -52,12 +51,12 @@ public class ChainedHashtable {
         System.out.println("Hashtable:");
         for (int i = 0; i < hashtable.length; i++) {
             if (hashtable[i] == null){
-                System.out.println("Index " + i + ": empty");
+                System.out.println("Index " + i + ": null");
 
             } else {
                 System.out.print("Index " + i + ": ");
                 for (StoredSuperHero storedSuperHero : hashtable[i]) {
-                    System.out.print(storedSuperHero.superHero);
+                    System.out.print("(" + storedSuperHero.superHero + ")");
                     System.out.print(" -> ");
                 }
                 System.out.println("null");
@@ -70,3 +69,5 @@ public class ChainedHashtable {
         return key.length() % hashtable.length;
     }
 }
+
+

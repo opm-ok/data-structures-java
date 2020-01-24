@@ -17,9 +17,7 @@ public class Main {
         hashtable.put("spiderman", spiderman ); // add to 9
         hashtable.put("superman", superman ); // add to 8
         hashtable.put("hulk", hulk); // add to 4
-
-        // add to 7 (4 is occupied by hulk, 5 and 6 are occupied, the next available index is 7) - LINEAR PROBING
-        hashtable.put("hawk", hawk);
+        hashtable.put("hawk", hawk); // linear probing; add to next available index
 
 
         // HASHTABLE - CHAINING
@@ -73,8 +71,8 @@ public class Main {
 // Collection occurs when more than one value has the same hashed value
 // Dealing with collision
 //      1) OPEN ADDRESSING (AO)
-                // Linear Probing
-                // If the position is taken, we look for another position in the array
+                // Linear Probing / Quadratic Probing
+                // If the index taken, next available index in the array using a linear or quadratic approach
 //      2) CHAINING
                 // LinkedList in each index of an array, collisions are stored together in a LinkedList
 
